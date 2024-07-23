@@ -11,7 +11,6 @@ This guide will help you set up and run Presto benchmarks using PrestoDB and PBe
 - Git
 - Docker
 - Docker Compose
-- Make
 
 ## Setup
 
@@ -20,3 +19,12 @@ This guide will help you set up and run Presto benchmarks using PrestoDB and PBe
 ```bash
 git clone https://github.com/prestodb/prestorials.git
 git clone https://github.com/prestodb/pbench.git
+```
+
+### Running Presto Java
+cd prestorials/docker-compose
+docker compose -v -f docker-compose-arm64.yaml up
+
+### Running Presto C++
+cd prestorials/docker-compose-native
+docker compose -v -f docker-compose-arm64.yaml up
