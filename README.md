@@ -22,9 +22,12 @@ git clone https://github.com/prestodb/pbench.git
 ```
 
 ### Running Presto Java
+```bash
 cd prestorials/docker-compose
 docker compose -v -f docker-compose-arm64.yaml up
-
+```
 ### Running Presto C++
+```bash
 cd prestorials/docker-compose-native
 docker compose -v -f docker-compose-arm64.yaml up
+```
