@@ -26,8 +26,18 @@ git clone https://github.com/prestodb/pbench.git
 cd prestorials/docker-compose
 docker compose -v -f docker-compose-arm64.yaml up
 ```
-### Running Presto C++
+### Running Presto C++ 
 ```bash
 cd prestorials/docker-compose-native
 docker compose -v -f docker-compose-arm64.yaml up
 ```
+
+
+
+## Using the pbench tool
+```bash
+cd path/to/pbench
+make all
+./pbench run benchmarks/tpc-ds/sf1.json benchmarks/tpc-ds/ds_power.json
+```
+
