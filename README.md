@@ -14,19 +14,37 @@ This guide will help you set up and run Presto benchmarks using PrestoDB and PBe
 
 ## Setup
 
-1. Clone the required repositories:
+1. Pull the required images first to allow time for downloading
+
+```bash
+docker pull prestodb/presto:latest
+docker pull public.ecr.aws/oss-presto/presto-native:0.289-ubuntu-arm64
+```
+
+2. Clone the required repositories
 
 ```bash
 git clone https://github.com/prestodb/prestorials.git
 git clone https://github.com/prestodb/pbench.git
 ```
 
+3. Download the dataset [here]()
+
+4. Copy the downloaded zip file to both of the following directories and unzip the file in each:
+```
+prestorials/docker-compose/data
+prestorials/docker-compose-native/prestissimo/data
+```
+This should result in the `tpcds` and `tpch` directories being created in the `/data` directories.
+The zip file can then be deleted from the `/data` directories.
+
 ### Running Presto Java
 ```bash
 cd prestorials/docker-compose
 docker compose -v -f docker-compose-arm64.yaml up
 ```
-### Running Presto C++ 
+
+### Running Presto C++
 ```bash
 cd prestorials/docker-compose-native
 docker compose -v -f docker-compose-arm64.yaml up
