@@ -50,6 +50,17 @@ cd prestorials/docker-compose-native
 docker compose -v -f docker-compose-arm64.yaml up
 ```
 
+### Using Presto CLI to run queries manually
+After deploying a Presto cluster and confirming that the server started, run the Presto CLI from the coordinator container: 
+```bash
+docker exec -it coordinator /opt/presto-cli --server http://127.0.0.1:8080 
+```
+While in Presto CLI, verify that the schemas exist and use hive.tpcds for example:
+```sql
+SHOW schemas in hive;
+USE hive.tpcds;
+SHOW tables;
+```
 
 
 ## Using the pbench tool
