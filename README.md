@@ -21,11 +21,10 @@ docker pull prestodb/presto:latest
 docker pull public.ecr.aws/oss-presto/presto-native:0.289-ubuntu-arm64
 ```
 
-2. Clone the required repositories
+2. Clone the prestorials repository
 
 ```bash
 git clone https://github.com/prestodb/prestorials.git
-git clone https://github.com/prestodb/pbench.git
 ```
 
 3. Download the dataset [here]()
@@ -38,15 +37,15 @@ prestorials/docker-compose-native/prestissimo/data
 This should result in the `tpcds` and `tpch` directories being created in the `/data` directories.
 The zip file can then be deleted from the `/data` directories.
 
-### Running Presto Java
-```bash
-cd prestorials/docker-compose
-docker compose -v -f docker-compose-arm64.yaml up
-```
-
 ### Running Presto C++
 ```bash
 cd prestorials/docker-compose-native
+docker compose -v -f docker-compose-arm64.yaml up
+```
+
+### Running Presto Java
+```bash
+cd prestorials/docker-compose
 docker compose -v -f docker-compose-arm64.yaml up
 ```
 
@@ -56,17 +55,31 @@ After deploying a Presto cluster and confirming that the server started, run the
 docker exec -it coordinator /opt/presto-cli --server http://127.0.0.1:8080 
 ```
 While in Presto CLI, verify that the schemas exist and use hive.tpcds for example:
-```sql
+```mysql
 SHOW schemas in hive;
 USE hive.tpcds;
 SHOW tables;
 ```
 
-
 ## Using the pbench tool
+
+First download the pbench binary tar for your platform:
+- [MacOS ARM-64]()
+- [MacOS x86-64]()
+- [Linux x86-64]()
+
+Then extract the file and cd into the created `pbench` directory.
+
+Use the commands below to run all TPC-DS queries on sf1
+
+For C++ cluster:
 ```bash
-cd path/to/pbench
-make all
-./pbench run benchmarks/tpc-ds/sf1.json benchmarks/tpc-ds/ds_power.json
+./pbench run benchmarks/java_native.json benchmarks/tpc-ds/sf1.json benchmarks/tpc-ds/ds_power.json
 ```
 
+For Java cluster:
+```bash
+./pbench run benchmarks/java_oss.json benchmarks/tpc-ds/sf1.json benchmarks/tpc-ds/ds_power.json
+```
+
+Different benchmark configurations can be used by specifying the path to json files in the `benchmarks` directory.
