@@ -27,7 +27,7 @@ docker pull public.ecr.aws/oss-presto/presto-native:0.289-ubuntu-arm64
 git clone https://github.com/prestodb/prestorials.git
 ```
 
-3. Download the dataset [here]()
+3. Download the dataset [here](https://presto-virtual-lab.s3.amazonaws.com/data.tar)
 
 4. Copy the downloaded zip file to both of the following directories and unzip the file in each:
 ```
@@ -64,9 +64,9 @@ SHOW tables;
 ## Using the pbench tool
 
 First download the pbench binary tar for your platform:
-- [MacOS ARM-64]()
-- [MacOS x86-64]()
-- [Linux x86-64]()
+- [MacOS ARM-64](https://presto-virtual-lab.s3.amazonaws.com/pbench_darwin_arm64.tar.gz)
+- [MacOS x86-64](https://presto-virtual-lab.s3.amazonaws.com/pbench_darwin_amd64.tar.gz)
+- [Linux x86-64](https://presto-virtual-lab.s3.amazonaws.com/pbench_linux_amd64.tar.gz)
 
 Then extract the file and cd into the created `pbench` directory.
 
