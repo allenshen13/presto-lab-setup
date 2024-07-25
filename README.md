@@ -29,10 +29,10 @@ git clone https://github.com/prestodb/prestorials.git
 
 3. Download the dataset [here](https://presto-virtual-lab.s3.amazonaws.com/data.tar)
 
-4. Copy the downloaded zip file to both of the following directories and unzip the file in each:
+4. Copy the downloaded tar file to both of the following directories and extract the file in each:
 ```
-prestorials/docker-compose/data
-prestorials/docker-compose-native/prestissimo/data
+prestorials/docker-compose
+prestorials/docker-compose-native/prestissimo
 ```
 This should result in the `tpcds` and `tpch` directories being created in the `/data` directories.
 The zip file can then be deleted from the `/data` directories.
